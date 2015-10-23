@@ -72,7 +72,7 @@ public class SearchCriteriaComponentTest {
     public void datepicker_interaction_changes_search_model() {
 
         moco.request(by(uri("/SearchCriteria.html"))).response(new PageResponse("SearchCriteria"));
-        SearchCriteriaComponent searchCriteria = new SearchCriteriaComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/SearchCriteria.html", webDriver, ngModel);
+        SearchCriteriaComponent searchCriteria = new SearchCriteriaComponent("http://t" + testNumber.nextTestNum() + ".devdio:8080/SearchCriteria.html", webDriver, ngModel);
         ISOChronology utc = ISOChronology.getInstanceUTC();
         DateTimeFormatter isoDateTimeParser = ISODateTimeFormat.dateTimeParser().withChronology(utc);
         DateTime startDateTime = isoDateTimeParser.parseDateTime(searchCriteria.getDateTime());
@@ -90,7 +90,7 @@ public class SearchCriteriaComponentTest {
     public void time_interaction_changes_search_model() {
 
         moco.request(by(uri("/SearchCriteria.html"))).response(new PageResponse("SearchCriteria"));
-        SearchCriteriaComponent searchCriteria = new SearchCriteriaComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/SearchCriteria.html", webDriver, ngModel);
+        SearchCriteriaComponent searchCriteria = new SearchCriteriaComponent(testNumber.makeTestSiteUrl() + "/SearchCriteria.html", webDriver, ngModel);
         ISOChronology utc = ISOChronology.getInstanceUTC();
         DateTimeFormatter isoDateTimeParser = ISODateTimeFormat.dateTimeParser().withChronology(utc);
         DateTime startDateTime = isoDateTimeParser.parseDateTime(searchCriteria.getDateTime());
@@ -119,7 +119,7 @@ public class SearchCriteriaComponentTest {
 
         moco.request(by(uri("/SearchResults.html"))).response(new PageResponse("OK"));
 
-        SearchCriteriaComponent searchCriteria = new SearchCriteriaComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/SearchCriteria.html", webDriver, ngModel);
+        SearchCriteriaComponent searchCriteria = new SearchCriteriaComponent(testNumber.makeTestSiteUrl() + "/SearchCriteria.html", webDriver, ngModel);
 
         searchCriteria.clickSubmitButton();
 
@@ -161,7 +161,7 @@ public class SearchCriteriaComponentTest {
         moco.request(by(uri("/SearchCriteria.html")))
                 .response(new PageResponse("SearchCriteria"));
 
-        final String site = "http://t" + testNumber.nextTestNum() + ".dev:8080";
+        final String site = testNumber.makeTestSiteUrl();
 
         moco.request(by(uri("/GetOriginLocationsByName")))
                 .response(new LocationContentHandler(new FsCachingLocationsByName(new GetGreyhoundOriginLocationsByName(), "Origin"), locationMap));

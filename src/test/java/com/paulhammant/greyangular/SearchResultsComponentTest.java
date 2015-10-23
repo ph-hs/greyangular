@@ -58,7 +58,7 @@ public class SearchResultsComponentTest {
 
         moco.request(by(uri("/SearchResults.html"))).response(new PageResponse("SearchResults"));
 
-        SearchResultsComponent component = new SearchResultsComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/SearchResults.html#1/2/3", webDriver);
+        SearchResultsComponent component = new SearchResultsComponent(testNumber.makeTestSiteUrl() + "/SearchResults.html#1/2/3", webDriver);
 
         component.hasReturnedToCriteria();
 
@@ -69,7 +69,7 @@ public class SearchResultsComponentTest {
 
         moco.request(by(uri("/SearchResults.html"))).response(new PageResponse("SearchResults"));
 
-        SearchResultsComponent component = new SearchResultsComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/SearchResults.html", webDriver);
+        SearchResultsComponent component = new SearchResultsComponent(testNumber.makeTestSiteUrl() + "/SearchResults.html", webDriver);
 
         component.hasReturnedToCriteria();
 
@@ -95,7 +95,7 @@ public class SearchResultsComponentTest {
                     }
                 });
 
-        SearchResultsComponent component = new SearchResultsComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/SearchResults.html#Narnia/TX/Valhalla/OR/2013-09-27/08:22", webDriver, ngModel);
+        SearchResultsComponent component = new SearchResultsComponent(testNumber.makeTestSiteUrl() + "/SearchResults.html#Narnia/TX/Valhalla/OR/2013-09-27/08:22", webDriver, ngModel);
 
         assertThat(params.toString(),
                 equalTo("from:Narnia, TX; to:Valhalla, OR; when:2013-09-27 08:22"));
@@ -109,7 +109,7 @@ public class SearchResultsComponentTest {
 
         moco.request(by(uri("/SearchResults.html"))).response(new PageResponse("SearchResults"));
 
-        SearchResultsComponent component = new SearchResultsComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/SearchResults.html#Narnia/TX/Valhalla/OR/2013-09-27/08:22", webDriver, ngModel);
+        SearchResultsComponent component = new SearchResultsComponent(testNumber.makeTestSiteUrl() + "/SearchResults.html#Narnia/TX/Valhalla/OR/2013-09-27/08:22", webDriver, ngModel);
 
         long percentage1 = component.getPercentage();
 
@@ -221,7 +221,7 @@ public class SearchResultsComponentTest {
                     }
                 });
 
-        SearchResultsComponent searchResults = new SearchResultsComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/SearchResults.html#Chicago/IL/Denver/CO/2013-09-27/08:22", webDriver, ngModel);
+        SearchResultsComponent searchResults = new SearchResultsComponent(testNumber.makeTestSiteUrl() + "/SearchResults.html#Chicago/IL/Denver/CO/2013-09-27/08:22", webDriver, ngModel);
 
         assertThat(searchResults.getSelection(), equalTo("null"));
 

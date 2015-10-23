@@ -67,7 +67,7 @@ public class ShowScheduleComponentTest {
                     }
                 });
 
-        ShowScheduleComponent schedule = new ShowScheduleComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/ShowSchedule.html#abc123", webDriver);
+        ShowScheduleComponent schedule = new ShowScheduleComponent(testNumber.makeTestSiteUrl() +"/ShowSchedule.html#abc123", webDriver);
 
         assertThat(params.toString(), equalTo("key:__HASH__abc123"));
 
@@ -95,7 +95,7 @@ public class ShowScheduleComponentTest {
                     }
                 });
 
-        ShowScheduleComponent component = new ShowScheduleComponent("http://t" + testNumber.nextTestNum() + ".dev:8080/ShowSchedule.html#abc123", webDriver);
+        ShowScheduleComponent component = new ShowScheduleComponent(testNumber.makeTestSiteUrl() + "/ShowSchedule.html#abc123", webDriver);
 
         assertThat(params.toString(), equalTo("key:__HASH__abc123"));
 
